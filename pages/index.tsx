@@ -6,7 +6,7 @@ import {
   useContract,
 } from "@thirdweb-dev/react";
 import { BigNumber } from "ethers";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { NextPage } from "next";
 import styles from "../styles/Theme.module.css";
 
@@ -15,10 +15,13 @@ import styles from "../styles/Theme.module.css";
 const myEditionDropContractAddress =
   "0x4a415D2F4bcC4a3023FBA6f98f0e40B5C3a17e09";
 
+const maxDegrees = 90;
+
 // Put your token ID here
 const tokenId = 0;
 
 const Home: NextPage = () => {
+  const cardRef = useRef<HTMLImageElement>(null);
   const { contract: editionDrop } = useContract(myEditionDropContractAddress);
 
   // The amount the user claims, updates when they type a value into the input field.
@@ -36,10 +39,25 @@ const Home: NextPage = () => {
     BigNumber.from(tokenId)
   );
 
+  useEffect(() => {
+    window.onmousemove = function (event) {
+      if (!cardRef.current) return;
+      var mouseX = event.pageX / window.innerWidth;
+      var mouseY = event.pageY / window.innerHeight;
+      var yDegrees = mouseX * maxDegrees - 0.5 * maxDegrees;
+      var xDegrees = -0.5 * (mouseY * maxDegrees - 0.5 * maxDegrees);
+
+      cardRef.current.style.transform =
+        "rotateY(" + yDegrees + "deg) rotateX(" + xDegrees + "deg)";
+    };
+  }, []);
+
   // Loading state while we fetch the metadata
   if (!editionDrop || !contractMetadata) {
     return <div className={styles.container}>Loading...</div>;
   }
+
+  
 
   return (
     <div className={styles.container}>
@@ -47,6 +65,7 @@ const Home: NextPage = () => {
         <div className={styles.infoSide}>
           <a href="https://heroesuprising.com" target="_blank" rel="noreferrer">
             <img
+              ref={cardRef}
               src="/logohur.png"
               alt="Heroes Uprising Logo"
               width={250}
@@ -75,7 +94,7 @@ const Home: NextPage = () => {
           {/* Amount claimed so far */}
           <div className={styles.mintCompletionArea}>
             <div className={styles.mintAreaLeft}>
-              <p>Total Minted</p>
+              <p>Total Claimed</p>
             </div>
             <div className={styles.mintAreaRight}>
               {activeClaimCondition ? (
