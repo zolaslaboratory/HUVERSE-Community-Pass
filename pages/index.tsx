@@ -13,7 +13,7 @@ import styles from "../styles/Theme.module.css";
 
 // Put Your Edition Drop Contract address from the dashboard here
 const myEditionDropContractAddress =
-  "0x4a415D2F4bcC4a3023FBA6f98f0e40B5C3a17e09";
+  "0xa048B62EC2ec1F3eb09de4dA47062C025CA715c1";
 
 const maxDegrees = 90;
 
