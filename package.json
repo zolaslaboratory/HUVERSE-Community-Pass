@@ -15,8 +15,7 @@
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "thirdweb": "^0.9.7",
-    "yarn": "^1.22.19"
+    "thirdweb": "^0.9.8"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
