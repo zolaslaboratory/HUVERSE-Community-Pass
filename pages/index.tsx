@@ -73,12 +73,12 @@ const Home: NextPage = () => {
             />
           </a>
           {/* Title of your NFT Collection */}
-          <h1>Community Pass (HUVERSE)</h1>
+          <h1>HUVERSE PASS (HUVERSE)</h1>
           {/* Description of your NFT Collection */}
           <p className={styles.description}>
           A unique <b>non-fungible token</b> and <b>non-transferable</b> pass for Heroes Uprising community members to enter a special realm called <b>HUVERSE</b>.<br/><br/>
             <a href="https://docs.heroesuprising.com/game-economy-tokens-sale-and-funds-information/access-pass" target="_blank" rel="noreferrer" className={styles.link}>
-              <b>Already have a community pass?</b>
+              <b>Already have a HUVERSE pass?</b>
             </a> 
           </p>
         </div>
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
                   await contract.erc1155.claim(tokenId, quantity)
                 }
                 // If the function is successful, we can do something here.
-                onSuccess={(result) => alert("Congratulations, you claimed it already")}
+                onSuccess={(result) => alert("Congratulations, you minted it already")}
                 // If the function fails, we can do something here.
                 onError={(error) => alert(error?.message)}
                 accentColor="#16354e"
@@ -130,8 +130,8 @@ const Home: NextPage = () => {
               </Web3Button>
               </div>
               <p className={styles.notice}>
-                  You only need one access pass.<br/>
-                  Not tradable and transferable. ⚠️
+                  You only need one HUVERSE pass each type.<br/>
+                  HUVERSE Pass are tradable and transferable. ⚠️
                 </p>
                 </>
         </div>
