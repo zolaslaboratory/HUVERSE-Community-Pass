@@ -1,3 +1,3 @@
-# Community Pass to HUVERSE
+# HUVERSE Pass to HUVERSE
 
 
